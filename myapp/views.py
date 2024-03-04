@@ -7,9 +7,11 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            print('Name:', form.cleaned_data['name'])
-            print('Email:', form.cleaned_data['email'])
-            print('Password:', form.cleaned_data['password'])
+            
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            return render(request, 'submitt.html', {'name': name , 'email':email, 'password':password})
         else:
             form = RegistrationForm()
     form = RegistrationForm()
